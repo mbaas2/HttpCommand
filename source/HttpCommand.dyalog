@@ -234,7 +234,7 @@
       :If 0=⎕NC'requestOnly' ⋄ requestOnly←¯1 ⋄ :EndIf
      
       :If isSimpleChar args ⍝ simple character vector args?
-      :AndIf (args≡'localhost')≥∧/args∊over lc ⎕A ⋄ args←'GET'args ⋄ :EndIf ⍝ localhost or only alphabetics?
+      :AndIf (args≡'localhost')≥∧/args∊over lc ⎕A ⋄ args←'GET'args ⋄ :EndIf ⍝ localhost or not only alphabetics?
      
       →∆EXIT⍴⍨9.1=nameClass cmd←r←requestOnly New args
       :If 0∊⍴cmd.Command ⋄ cmd.Command←(1+0∊⍴cmd.Params)⊃'POST' 'GET' ⋄ :EndIf
@@ -1085,7 +1085,7 @@
       →∆EXIT↓⍨timedOut←⎕AI[3]>donetime ⍝ exit unless donetime hasn't passed
       →∆EXIT↓⍨Timeout<0                ⍝ if Timeout<0, reset donetime if there's progress
       →∆EXIT↓⍨0=⊃tmp←LDRC.Tree obj     ⍝ look at the current state of the connection
-      snap←2 2⊃tmp                     ⍝ second element shoulf contain the state
+      snap←2 2⊃tmp                     ⍝ second element should contain the state
       :If ~0∊⍴snap                     ⍝ if we have any...
           snap←(⊂∘⍋⌷⊢)↑(↑2 2⊃tmp)[;1]  ⍝ ...progress should be in elements [4 5]
       :EndIf
@@ -1461,7 +1461,7 @@
           :For cookie :In new
               :If 0≠ind←cookies.Name iotaz⊂cookie.Name
                   :If 0∊⍴cookie.Value ⍝ deleted cookie?
-                      cookie←(ind≠⍳≢cookies)/cookies
+                      cookies←(ind≠⍳≢cookies)/cookies
                   :Else
                       cookies[ind]←cookie
                   :EndIf
