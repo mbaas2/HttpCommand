@@ -50,10 +50,12 @@ If you're using SSE, the `HttpCommand` result namespace has some additional elem
 [rc: ¯1 | msg: Server responded with SSE, but EnableSSE=0 | HTTP Status: 200 "OK" | ≢Data: 0]
 </code></pre>
 Duh! Need to set `EnableSSE←1`
-<pre><code>      onSSE←{              
-     '10'≡⍵.id: ⍺.Close ⍝ close listener when we get to id='10'
-     ⍵.(event id)       ⍝ otherwise display the event and id    
-     }                    
+<pre><code>onSSE←{
+       ⍝ ⍺ - reference to HttpCommand result namespace
+       ⍝ ⍵ - SSE payload              
+         '10'≡⍵.id: ⍺.Close ⍝ close listener when we get to id='10'
+         ⍵.(event id)       ⍝ otherwise display the event and id    
+       }                    
       
       h←HttpCommand.New (
       URL:'https://echo.websocket.org/.sse'

@@ -1,3 +1,5 @@
 *.dlf
 *.rng*
 site/
+.claude/
+.devcontainer/
