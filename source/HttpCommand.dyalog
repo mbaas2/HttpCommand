@@ -217,7 +217,9 @@
           :Else
               r←##.⎕NEW(⊃⊃⎕CLASS ⎕THIS)(eis⍣(9.1≠nameClass⊃args)⊢args)
           :EndIf
-          r.RequestOnly←requestOnly
+          :If requestOnly≠¯1
+              r.RequestOnly←requestOnly
+          :EndIf
       :Else
           r←initResult #.⎕NS''
           r.(rc msg)←¯1 ⎕DMX.EM
@@ -949,6 +951,9 @@
                       :ElseIf ∨/'application/json'⍷ct
                           r.Data←data
                           JSONimport r
+                      :ElseIf ∨/'application/x-www-form-urlencoded'⍷ct
+                          r.Data←data
+                          ParseUrlEncodedForm r
                       :Else
                           r.Data←data
                       :EndIf
@@ -1662,6 +1667,23 @@
           m←(⍴r)⍴1 ⋄ m[(,j),i~fill]←0
           r←m/r
       :EndIf
+    ∇
+
+    ∇ ParseUrlEncodedForm r;data;name;value;formData
+    ⍝ parse application/x-www-form-urlencoded content
+      :Trap 0
+          data←UrlDecode¨¨(r.Data splitOn'&')splitOn¨'='
+          formData←⎕NS''
+          :For (name value) :In data
+              →Oops⍴⍨('.'∊name)∨¯1=⎕NC name
+              :If 0=formData.⎕NC name ⋄ formData{⍺⍎⍵,'←⍬'}name ⋄ :EndIf
+              formData(name{⍺⍎⍺⍺,',←⍵'})value
+          :EndFor
+          r.Data←formData
+      :Else
+     Oops:
+          r.(rc msg)←¯2 'Could not translate URL Encoded Form payload'
+      :EndTrap
     ∇
 
     ∇ w←SafeJSON w;i;c;⎕IO
