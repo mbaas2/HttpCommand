@@ -1,0 +1,36 @@
+ r←test_headers dummy;h;req
+
+ r←''
+
+⍝ 2-column matrix format
+ h←#.HttpCommand.New'get' 'http://example.com/'
+ h.Headers←2 2⍴'X-One' 'aaa' 'X-Two' 'bbb'
+ req←h.Show
+ :If ~'X-One: aaa'(∨/⍷)req
+     →0⊣r←'Matrix headers: X-One not found'
+ :EndIf
+ :If ~'X-Two: bbb'(∨/⍷)req
+     →0⊣r←'Matrix headers: X-Two not found'
+ :EndIf
+
+⍝ Vector of colon-delimited strings (value may have a leading space after split)
+ h←#.HttpCommand.New'get' 'http://example.com/'
+ h.Headers←'X-One: ccc' 'X-Two: ddd'
+ req←h.Show
+ :If ~('X-One:'(∨/⍷)req)∧('ccc'(∨/⍷)req)
+     →0⊣r←'String headers: X-One not found'
+ :EndIf
+ :If ~('X-Two:'(∨/⍷)req)∧('ddd'(∨/⍷)req)
+     →0⊣r←'String headers: X-Two not found'
+ :EndIf
+
+⍝ Depth-3 pairs: vector of (name value) vectors
+ h←#.HttpCommand.New'get' 'http://example.com/'
+ h.Headers←('X-One' 'eee')('X-Two' 'fff')
+ req←h.Show
+ :If ~'X-One: eee'(∨/⍷)req
+     →0⊣r←'Pairs headers: X-One not found'
+ :EndIf
+ :If ~'X-Two: fff'(∨/⍷)req
+     →0⊣r←'Pairs headers: X-Two not found'
+ :EndIf

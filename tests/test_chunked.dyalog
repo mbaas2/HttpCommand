@@ -1,4 +1,3 @@
-﻿ {r}←test_chunked dummy;result;t
- t←#.httpcommand_test
- result←#.HttpCommand.Get'https://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx'
- r←0 200 'chunked't.check result.(rc HttpStatus),⊂result.Headers #.HttpCommand.Lookup'transfer-encoding'
+﻿ {r}←test_chunked dummy;result
+ result←#.HttpCommand.Get #._httpbin,'/stream/3'
+ r←0 200 'chunked'check result.(rc HttpStatus),⊂result.GetHeader'transfer-encoding'

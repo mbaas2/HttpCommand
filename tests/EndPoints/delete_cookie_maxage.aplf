@@ -1,0 +1,5 @@
+ delete_cookie_maxage←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     _←'set-cookie'⍵.SetHeader'sessionid=abc123; Max-Age=0'
+     'cookie deleted via max-age'
+ }

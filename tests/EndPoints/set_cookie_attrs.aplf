@@ -1,0 +1,5 @@
+ set_cookie_attrs←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     _←'set-cookie'⍵.SetHeader'token=xyz123; Path=/api; SameSite=Lax; HttpOnly'
+     'attrs cookie set'
+ }

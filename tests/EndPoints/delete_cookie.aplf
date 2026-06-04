@@ -1,0 +1,5 @@
+ delete_cookie←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     _←'set-cookie'⍵.SetHeader'sessionid=abc123; Expires=Thu, 01 Jan 1970 00:00:00 GMT'
+     'cookie deleted'
+ }

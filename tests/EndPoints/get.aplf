@@ -1,0 +1,10 @@
+ get←{
+     req←⍵
+     _←'content-type'req.SetHeader'application/json'
+     makeObj←{0=⊃⍴⍵:'{}' ⋄ '{',({1↓⍵}∊{',','"',(1⊃⍵),'":"',(2⊃⍵),'"'}¨↓⍵),'}'}
+     args←makeObj req.QueryParams
+     hdrs←makeObj req.Headers
+     origin←⎕JSON⊂req.PeerAddr
+     url←⎕JSON⊂req.Hostname,req.URL
+     '{"args":',args,',"headers":',hdrs,',"origin":',origin,',"url":',url,'}'
+ }

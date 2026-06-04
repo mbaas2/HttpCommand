@@ -1,0 +1,16 @@
+ r←test_head dummy;url;port;resp
+
+ r←''
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+
+⍝ HEAD request: response has status and headers but no body
+ resp←#.HttpCommand.Do'head'(url,'/EndPoints/ping')
+ :If 0≠resp.rc
+     →0⊣r←'HEAD request failed: ',resp.msg
+ :EndIf
+ :If 200≠resp.HttpStatus
+     →0⊣r←'HEAD expected 200, got: ',⍕resp.HttpStatus
+ :EndIf
+ :If ~0∊⍴resp.Data
+     →0⊣r←'HEAD response should have empty Data, got: ',⍕resp.Data
+ :EndIf

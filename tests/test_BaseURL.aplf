@@ -1,10 +1,10 @@
  r←test_BaseURL dummy;h;base;url;port;t;host
  ⍝ test all combinations of setting BaseURL and URL
- ⍝ most tests use HttpCommand.Show to return the request that would be sent, and we inspect that
- ⍝ in the final case, we use HttpCommand.Run to test an actual request against a local HttpServer
+ ⍝ most tests use #.HttpCommand.Show to return the request that would be sent, and we inspect that
+ ⍝ in the final case, we use #.HttpCommand.Run to test an actual request against a local #.HttpServer
 
- h←HttpCommand.New''
- base←'http://',host←'localhost:',⍕port←8090 Using HttpServer
+ h←#.HttpCommand.New''
+ base←'http://',host←'localhost:',⍕port←8090 Using #.HttpServer
  url←'EndPoints/ping'
 
  :If {9≠⎕NC'⍵'}t←h.Show  ⍝ result should be namespace with error

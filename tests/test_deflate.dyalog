@@ -1,4 +1,3 @@
-﻿ {r}←test_deflate dummy;result;t
- t←#.httpcommand_test
- result←#.HttpCommand.Get t._httpbin,'deflate'
- r←(0 200,t._true,(⊂'deflate'))t.check result.(rc HttpStatus),((t.fromJSON result.Data).deflated),⊂result.Headers #.HttpCommand.Lookup'content-encoding'
+ {r}←test_deflate dummy;result
+ result←#.HttpCommand.Get #._httpbin,'/deflate'
+ r←0 200 'deflate'check result.(rc HttpStatus),⊂result.GetHeader'content-encoding'

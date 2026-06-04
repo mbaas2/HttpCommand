@@ -1,0 +1,28 @@
+ r←test_url_encode_decode dummy
+
+ r←''
+
+⍝ Space encoded as %20
+ :If 'hello%20world'≢#.HttpCommand.UrlEncode'hello world'
+     →0⊣r←'UrlEncode space: expected hello%20world, got: ',#.HttpCommand.UrlEncode'hello world'
+ :EndIf
+
+⍝ Decode %20 back to space
+ :If 'hello world'≢#.HttpCommand.UrlDecode'hello%20world'
+     →0⊣r←'UrlDecode %20: expected ''hello world'', got: ',#.HttpCommand.UrlDecode'hello%20world'
+ :EndIf
+
+⍝ Decode + as space
+ :If 'hello world'≢#.HttpCommand.UrlDecode'hello+world'
+     →0⊣r←'UrlDecode +: expected ''hello world'', got: ',#.HttpCommand.UrlDecode'hello+world'
+ :EndIf
+
+⍝ Named encoding produces name=value form
+ :If 'q=hello%20world'≢'q'#.HttpCommand.UrlEncode'hello world'
+     →0⊣r←'Named UrlEncode: expected q=hello%20world, got: ','q'#.HttpCommand.UrlEncode'hello world'
+ :EndIf
+
+⍝ Round-trip
+ :If 'hello world'≢#.HttpCommand.UrlDecode #.HttpCommand.UrlEncode'hello world'
+     →0⊣r←'UrlEncode/UrlDecode round-trip failed'
+ :EndIf

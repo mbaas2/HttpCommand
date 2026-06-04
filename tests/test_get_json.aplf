@@ -1,0 +1,26 @@
+ r←test_get_json dummy;url;port;resp
+
+ r←''
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+
+⍝ GetJSON parses JSON response into a namespace
+ resp←#.HttpCommand.GetJSON(url,'/EndPoints/json_response')
+ :If 0≠resp.rc
+     →0⊣r←'GetJSON request failed: ',resp.msg
+ :EndIf
+ :Trap 0
+     :If 'ok'≢resp.Data.status
+         →0⊣r←'GetJSON wrong status value: ',⍕resp.Data.status
+     :EndIf
+     :If 42≠resp.Data.value
+         →0⊣r←'GetJSON wrong value: ',⍕resp.Data.value
+     :EndIf
+ :Else
+     →0⊣r←'GetJSON Data is not a parseable namespace: ',⍕resp.Data
+ :EndTrap
+
+⍝ GetJSON fails gracefully when response is not JSON
+ resp←#.HttpCommand.GetJSON(url,'/EndPoints/ping')
+ :If resp.rc=0
+     →0⊣r←'GetJSON on non-JSON endpoint should fail, got rc=0'
+ :EndIf

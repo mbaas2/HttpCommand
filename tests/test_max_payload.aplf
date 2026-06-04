@@ -1,0 +1,32 @@
+ r←test_max_payload dummy;h;url;port;resp
+
+ r←''
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+
+⍝ MaxPayloadSize=-1 (default): full response received
+ resp←#.HttpCommand.Get(url,'/EndPoints/large_response')
+ :If 0≠resp.rc
+     →0⊣r←'Unlimited payload request failed: ',resp.msg
+ :EndIf
+ :If 10000≠≢resp.Data
+     →0⊣r←'Expected 10000 bytes, got: ',⍕≢resp.Data
+ :EndIf
+
+⍝ MaxPayloadSize=100: error when response exceeds limit
+ h←#.HttpCommand.New'get'(url,'/EndPoints/large_response')
+ h.MaxPayloadSize←100
+ resp←h.Run
+ :If ¯1≠resp.rc
+     →0⊣r←'MaxPayloadSize not enforced, got rc=',⍕resp.rc
+ :EndIf
+ :If ~'MaxPayloadSize'(∨/⍷)resp.msg
+     →0⊣r←'Expected MaxPayloadSize in error message, got: ',resp.msg
+ :EndIf
+
+⍝ MaxPayloadSize=10000 (exact boundary): response accepted
+ h←#.HttpCommand.New'get'(url,'/EndPoints/large_response')
+ h.MaxPayloadSize←10000
+ resp←h.Run
+ :If 0≠resp.rc
+     →0⊣r←'Exact boundary MaxPayloadSize rejected response: ',resp.msg
+ :EndIf

@@ -1,0 +1,23 @@
+ r←test_suppress_headers dummy;h;req
+
+ r←''
+
+⍝ Default: auto-generated headers are present
+ h←#.HttpCommand.New'get' 'http://example.com/'
+ req←h.Show
+ :If ~'Host: example.com'(∨/⍷)req
+     →0⊣r←'Host header missing without SuppressHeaders'
+ :EndIf
+ :If ~'User-Agent:'(∨/⍷)req
+     →0⊣r←'User-Agent header missing without SuppressHeaders'
+ :EndIf
+
+⍝ SuppressHeaders=1: auto-generated headers omitted
+ h.SuppressHeaders←1
+ req←h.Show
+ :If 'Host:'(∨/⍷)req
+     →0⊣r←'Host header present with SuppressHeaders=1'
+ :EndIf
+ :If 'User-Agent:'(∨/⍷)req
+     →0⊣r←'User-Agent header present with SuppressHeaders=1'
+ :EndIf

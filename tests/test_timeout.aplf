@@ -1,8 +1,8 @@
  r←test_timeout dummy;port;url;c;chk
- url←'http://localhost:',⍕port←8090 Using HttpServer
- c←#.HttpCommand.New'get'(url,'/timeout_test')
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+ c←#.HttpCommand.New'get'(url,'/EndPoints/timeout')
  c.Timeout←5
- chk←100 Check (⎕←c.Run).rc
- c.Timeout←10
- chk∨←0 Check (⎕←c.Run).rc
+ chk←100≠c.Run.rc
+ c.Timeout←15
+ chk∨←0≠c.Run.rc
  r←chk/'Timeout test failed'

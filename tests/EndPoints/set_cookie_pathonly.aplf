@@ -1,0 +1,5 @@
+ set_cookie_pathonly←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     _←'set-cookie'⍵.SetHeader'apikey=secret; Path=/api'
+     'path-restricted cookie set'
+ }

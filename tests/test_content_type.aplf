@@ -1,0 +1,31 @@
+ r←test_content_type dummy;h;ns;req
+
+ r←''
+
+⍝ Namespace params auto-detected as application/json
+ h←#.HttpCommand.New'post' 'http://example.com/'
+ (ns←⎕NS'').key←'val'
+ h.Params←ns
+ req←h.Show
+ :If ~'application/json'(∨/⍷)req
+     →0⊣r←'Namespace params should auto-detect content-type as JSON'
+ :EndIf
+
+⍝ Explicit ContentType overrides auto-detected content-type
+ h.ContentType←'application/x-www-form-urlencoded'
+ req←h.Show
+ :If ~'application/x-www-form-urlencoded'(∨/⍷)req
+     →0⊣r←'Explicit ContentType not found in request'
+ :EndIf
+ :If 'application/json'(∨/⍷)req
+     →0⊣r←'Auto-detected JSON present when ContentType overrides it'
+ :EndIf
+
+⍝ Arbitrary ContentType is passed through
+ h2←#.HttpCommand.New'post' 'http://example.com/'
+ h2.Params←'<root/>'
+ h2.ContentType←'text/xml; charset=utf-8'
+ req←h2.Show
+ :If ~'Content-Type: text/xml; charset=utf-8'(∨/⍷)req
+     →0⊣r←'text/xml ContentType not in request'
+ :EndIf

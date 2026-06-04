@@ -1,0 +1,8 @@
+ r←test_delete dummy;url;port;resp
+
+ r←''
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+
+⍝ DELETE request: server echoes method name
+ resp←#.HttpCommand.Do'delete'(url,'/EndPoints/echo_method')
+ r←0 200 'delete'check resp.(rc HttpStatus Data)

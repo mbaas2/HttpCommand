@@ -1,4 +1,4 @@
- ping←{
+ large_response←{
      _←'content-type'⍵.SetHeader'text/plain'
-     'pong' ⍝ response payload
+     10000⍴'x'
  }

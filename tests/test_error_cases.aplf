@@ -1,0 +1,33 @@
+ r←test_error_cases dummy;resp
+
+ r←''
+
+⍝ Empty URL returns error
+ resp←#.HttpCommand.Get''
+ :If 0=resp.rc
+     →0⊣r←'Empty URL: expected error, got rc=0'
+ :EndIf
+
+⍝ URL with no host returns error
+ resp←#.HttpCommand.Get'http://'
+ :If 0=resp.rc
+     →0⊣r←'URL with no host: expected error, got rc=0'
+ :EndIf
+
+⍝ Port 0 is invalid
+ resp←#.HttpCommand.Get'http://example.com:0/'
+ :If 0=resp.rc
+     →0⊣r←'Port 0: expected error, got rc=0'
+ :EndIf
+
+⍝ Port above valid range is invalid
+ resp←#.HttpCommand.Get'http://example.com:99999/'
+ :If 0=resp.rc
+     →0⊣r←'Port 99999: expected error, got rc=0'
+ :EndIf
+
+⍝ Invalid (non-HTTP) scheme returns error
+ resp←#.HttpCommand.Get'ftp://example.com/'
+ :If 0=resp.rc
+     →0⊣r←'FTP scheme: expected error, got rc=0'
+ :EndIf

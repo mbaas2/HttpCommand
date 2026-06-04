@@ -1,0 +1,5 @@
+ redirect←{
+     _←⍵.SetStatus 302
+     _←'location'⍵.SetHeader ⍵.Hostname,'/EndPoints/ping'
+     ''
+ }

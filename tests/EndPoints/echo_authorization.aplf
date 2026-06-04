@@ -1,0 +1,4 @@
+ echo_authorization←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     ⍵.GetHeader'authorization'
+ }

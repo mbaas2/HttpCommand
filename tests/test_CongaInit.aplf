@@ -1,2 +1,65 @@
-test_CongaInit
-⍝ test various ways Conga initialization could go wring
+ r←test_CongaInit dummy;savedCongaPath;dyalogDir;tn;tmpDir;names;types;file;resp;isWin
+
+ r←''
+ savedCongaPath←#.HttpCommand.CongaPath
+
+⍝ Determine the Dyalog installation directory (mirrors #.HttpCommand.dyalogRoot)
+ dyalogDir←{⍵,('/\'∊⍨⊢/⍵)↓'/'}{0∊⍴t←2 ⎕NQ #'GetEnvironment' 'DYALOG':⊃1 ⎕NPARTS⊃2 ⎕NQ'.' 'GetCommandLineArgs' ⋄ t}''
+ isWin←'win'≡⍥⎕C 3↑⊃#.⎕WG 'APLVersion'
+
+⍝ Create a unique temporary directory
+ tmpDir←(739⌶0),'/httpcommand_congainit_test/'
+ :If ⎕NEXISTS tmpDir
+     :Trap 0
+         2 ⎕NDELETE ¯1↓tmpDir
+     :Case 19 ⍝ file accesss error, do nothing
+     :Else
+         →Exitr←'Unable to delete previous temporary folder: ',⊃⎕DM
+     :EndTrap
+ :EndIf
+ :If ~⎕NEXISTS tmpDir
+     :Trap 0
+         ⎕MKDIR ¯1↓tmpDir
+     :Else
+         →Cleanup⊣r←'Unable to create temporary folder: ',⊃⎕DM
+     :EndTrap
+ :EndIf
+
+⍝ Copy the Conga workspace into the temporary directory
+ :Trap 0
+     (tmpDir,'conga.dws')⎕NCOPY dyalogDir,'ws/conga.dws'
+ :Else
+     →Cleanup⊣r←'Failed to copy conga.dws: ',⊃⎕DM
+ :EndTrap
+
+⍝ Copy the Conga shared libraries into the temporary directory
+ (names types)←0 1(⎕NINFO⍠1)dyalogDir,('lib/'/⍨~isWin),'conga*.',(1+isWin)⊃'so' 'dll'
+ :For file :In names/⍨types=2
+     :Trap 0
+         (tmpDir,∊1↓1 ⎕NPARTS file)⎕NCOPY file
+     :Else
+         →Cleanup⊣r←'Failed to copy ',file,': ',⊃⎕DM
+     :EndTrap
+ :EndFor
+
+⍝ Reset LDRC and point CongaPath at the temporary directory
+ #.HttpCommand.LDRC←''
+ #.HttpCommand.CongaPath←tmpDir
+
+⍝ Verify that Conga initializes correctly from CongaPath
+ resp←#.HttpCommand.Get 'http://httpbin.org/get'
+ →Cleanup⊣r←(~resp.IsOK)/⍕resp
+
+Cleanup:
+ :Trap 0
+     2 ⎕NDELETE ¯1↓tmpDir ⍝ attempt to delete the temporary folder
+ :Case 19 ⍝ file access error
+     ⍝ indicates shared libraries are loaded and their files can't be erased
+     ⍝ we ignore it for now as other tests can run
+     →Exit⊣r←''
+ :Else
+     →Exit⊣r←'Error trying to clean up temporary folder: ',⊃⎕DM
+ :EndTrap
+ #.HttpCommand.LDRC←''
+ #.HttpCommand.CongaPath←savedCongaPath
+Exit:

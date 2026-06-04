@@ -1,0 +1,36 @@
+ r←test_redirections dummy;h;url;port;resp
+
+ r←''
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+
+⍝ MaxRedirections=0: do not follow redirect, return 302
+ h←#.HttpCommand.New'get'(url,'/EndPoints/redirect')
+ h.MaxRedirections←0
+ resp←h.Run
+ :If 0≠resp.rc
+     →0⊣r←'MaxRedirections=0 should succeed with 302, got rc=',⍕resp.rc
+ :EndIf
+ :If 302≠resp.HttpStatus
+     →0⊣r←'MaxRedirections=0 expected 302, got: ',⍕resp.HttpStatus
+ :EndIf
+ :If ~0∊⍴resp.Redirections
+     →0⊣r←'MaxRedirections=0 should have empty Redirections'
+ :EndIf
+
+⍝ Default MaxRedirections: follow redirect to ping, Redirections populated
+ resp←#.HttpCommand.Get(url,'/EndPoints/redirect')
+ :If 0≠resp.rc
+     →0⊣r←'Redirect not followed: ',resp.msg
+ :EndIf
+ :If 200≠resp.HttpStatus
+     →0⊣r←'Expected 200 after redirect, got: ',⍕resp.HttpStatus
+ :EndIf
+ :If 'pong'≢resp.Data
+     →0⊣r←'Expected pong after redirect, got: ',⍕resp.Data
+ :EndIf
+ :If 1≠≢resp.Redirections
+     →0⊣r←'Expected 1 redirection entry, got: ',⍕≢resp.Redirections
+ :EndIf
+ :If 302≠(⊃resp.Redirections).HttpStatus
+     →0⊣r←'Redirections entry should have HttpStatus 302'
+ :EndIf

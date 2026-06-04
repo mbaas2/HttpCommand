@@ -1418,8 +1418,8 @@
                   :If ''≡cookie.Expires ⍝ if Expires was set already from MaxAge, MaxAge takes precedence
                       →∆NEXT⍴⍨0∊⍴cookie.Expires←parseHttpDate value ⍝ ignore cookies with invalid expires dates
                   :EndIf
-              :Case 'max-age' ⍝ specifies number of seconds after which cookie expires
-                  cookie.Expires←Now+seconds toInt value
+              :Case 'max-age' ⍝ specifies number of seconds after which cookie expires - takes priority over 
+                  cookie.Expires←Now+seconds{⍵=0:¯86400 ⋄ 0}toInt value ⍝ max-age=0 means delete cookie
               :Case 'domain' ⍝ RCF 6265 Sec. 5.2.3
                   →∆NEXT⍴⍨0∊⍴domain←lc value ⍝ cookies with empty domain values are ignored
                   :If domain≡host

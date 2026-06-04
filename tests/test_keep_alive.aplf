@@ -1,0 +1,27 @@
+ r←test_keep_alive dummy;h;url;port;r1;r2
+
+ r←''
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+
+⍝ KeepAlive=1 (default): multiple requests on same instance succeed
+ h←#.HttpCommand.New'get'(url,'/EndPoints/ping')
+ h.KeepAlive←1
+ r1←h.Run
+ r2←h.Run
+ :If 0≠r1.rc
+     →0⊣r←'KeepAlive=1: first request failed: ',r1.msg
+ :EndIf
+ :If 0≠r2.rc
+     →0⊣r←'KeepAlive=1: second request failed: ',r2.msg
+ :EndIf
+
+⍝ KeepAlive=0: connection closed after each request; subsequent requests still succeed
+ h.KeepAlive←0
+ r1←h.Run
+ r2←h.Run
+ :If 0≠r1.rc
+     →0⊣r←'KeepAlive=0: first request failed: ',r1.msg
+ :EndIf
+ :If 0≠r2.rc
+     →0⊣r←'KeepAlive=0: second request failed: ',r2.msg
+ :EndIf

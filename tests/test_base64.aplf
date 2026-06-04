@@ -1,0 +1,28 @@
+ r←test_base64 dummy
+
+ r←''
+
+⍝ Known encoding
+ :If 'aGVsbG8='≢#.HttpCommand.Base64Encode'hello'
+     →0⊣r←'Base64Encode ''hello'' expected aGVsbG8=, got: ',#.HttpCommand.Base64Encode'hello'
+ :EndIf
+
+⍝ Known decoding
+ :If 'hello'≢#.HttpCommand.Base64Decode'aGVsbG8='
+     →0⊣r←'Base64Decode ''aGVsbG8='' expected hello, got: ',#.HttpCommand.Base64Decode'aGVsbG8='
+ :EndIf
+
+⍝ Round-trip
+ :If 'Hello, World!'≢#.HttpCommand.Base64Decode #.HttpCommand.Base64Encode'Hello, World!'
+     →0⊣r←'Base64 round-trip failed for ''Hello, World!'''
+ :EndIf
+
+⍝ Empty string round-trip
+ :If ''≢#.HttpCommand.Base64Decode #.HttpCommand.Base64Encode''
+     →0⊣r←'Base64 round-trip failed for empty string'
+ :EndIf
+
+⍝ Credentials encoding used for Basic auth
+ :If 'dXNlcjpwYXNz'≢12↑#.HttpCommand.Base64Encode'user:pass'
+     →0⊣r←'Basic auth encoding wrong: ',#.HttpCommand.Base64Encode'user:pass'
+ :EndIf

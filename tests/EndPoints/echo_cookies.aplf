@@ -1,4 +1,4 @@
- ping←{
+ echo_cookies←{
      _←'content-type'⍵.SetHeader'text/plain'
-     'pong' ⍝ response payload
+     ⍵.GetHeader'cookie'
  }

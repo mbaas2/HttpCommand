@@ -1,0 +1,52 @@
+ r←test_auth dummy;h;req;url;port;resp
+
+ r←''
+
+⍝ Basic auth from userid:password string - Secret=0 reveals value in Show
+ h←#.HttpCommand.New'get' 'http://example.com/'
+ h.Auth←'user:secret'
+ h.Secret←0
+ req←h.Show
+ :If ~'Authorization: Basic '(∨/⍷)req
+     →0⊣r←'Basic auth: Authorization header missing'
+ :EndIf
+ :If ~(#.HttpCommand.Base64Encode'user:secret')(∨/⍷)req
+     →0⊣r←'Basic auth: wrong base64 encoding in header'
+ :EndIf
+
+⍝ Basic auth from 2-element vector
+ h←#.HttpCommand.New'get' 'http://example.com/'
+ h.Auth←'user' 'secret'
+ h.Secret←0
+ req←h.Show
+ :If ~'Authorization: Basic '(∨/⍷)req
+     →0⊣r←'Basic 2-vector: Authorization header missing'
+ :EndIf
+ :If ~(#.HttpCommand.Base64Encode'user:secret')(∨/⍷)req
+     →0⊣r←'Basic 2-vector: wrong encoding'
+ :EndIf
+
+⍝ Bearer token
+ h←#.HttpCommand.New'get' 'http://example.com/'
+ h.Auth←'mytoken123'
+ h.AuthType←'Bearer'
+ h.Secret←0
+ req←h.Show
+ :If ~'Authorization: Bearer mytoken123'(∨/⍷)req
+     →0⊣r←'Bearer: Authorization header wrong'
+ :EndIf
+
+⍝ Live test: auth header actually reaches server
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+ h←#.HttpCommand.New'get'(url,'/EndPoints/echo_authorization')
+ h.Auth←'testuser:testpass'
+ resp←h.Run
+ :If 0 200≢resp.(rc HttpStatus)
+     →0⊣r←'Live auth request failed: ',resp.msg
+ :EndIf
+ :If ~'Basic '(∨/⍷)resp.Data
+     →0⊣r←'Live auth: server did not receive Basic Authorization header'
+ :EndIf
+ :If ~(#.HttpCommand.Base64Encode'testuser:testpass')(∨/⍷)resp.Data
+     →0⊣r←'Live auth: server received wrong credentials'
+ :EndIf

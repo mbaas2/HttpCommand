@@ -1,0 +1,7 @@
+ set_multiple_cookies←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     _←'set-cookie'⍵.SetHeader'alpha=one; Path=/'
+     _←'set-cookie'⍵.SetHeader'beta=two; Path=/'
+     _←'set-cookie'⍵.SetHeader'gamma=three; Path=/'
+     'three cookies set'
+ }

@@ -1,0 +1,4 @@
+ json_response←{
+     _←'content-type'⍵.SetHeader'application/json'
+     '{"status":"ok","value":42}'
+ }

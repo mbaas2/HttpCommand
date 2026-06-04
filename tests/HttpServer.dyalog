@@ -911,12 +911,13 @@
           r←⍕ErrorInfoLevel↑⎕DMX.(EM({⍵↑⍨⍵⍳']'}2⊃DM))
         ∇
 
-        ∇ name SetHeader value
+        ∇ {r}←name SetHeader value
           :Access Public Instance
           Response.Headers⍪←name value
+          r←Response.Headers
         ∇
 
-        ∇ {statusText}SetStatus status
+        ∇ {status}←{statusText}SetStatus status
           :Access public instance
           :If status≠0
               :If 0=⎕NC'statusText'

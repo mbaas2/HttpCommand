@@ -1,0 +1,20 @@
+ r←test_translate_data dummy;h;url;port;resp
+
+ r←''
+ url←'http://localhost:',⍕port←8090 Using #.HttpServer
+ h←#.HttpCommand.New'get'(url,'/EndPoints/json_response')
+ h.TranslateData←1
+ resp←h.Run
+ :If 0≠resp.rc
+     →0⊣r←'TranslateData request failed: ',resp.msg
+ :EndIf
+ :Trap 0
+     :If 'ok'≢resp.Data.status
+         →0⊣r←'Wrong translated value status: ',⍕resp.Data.status
+     :EndIf
+     :If 42≠resp.Data.value
+         →0⊣r←'Wrong translated value: ',⍕resp.Data.value
+     :EndIf
+ :Else
+     →0⊣r←'TranslateData Data is not a parseable namespace: ',⍕resp.Data
+ :EndTrap

@@ -1,0 +1,5 @@
+ set_cookie_maxage←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     _←'set-cookie'⍵.SetHeader'session=12345; Max-Age=3600'
+     'max-age cookie set'
+ }

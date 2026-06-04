@@ -1,0 +1,5 @@
+ set_cookie←{
+     _←'content-type'⍵.SetHeader'text/plain'
+     _←'set-cookie'⍵.SetHeader'sessionid=abc123; Path=/; HttpOnly'
+     'cookie set'
+ }

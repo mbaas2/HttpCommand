@@ -1,0 +1,29 @@
+ r←test_request_only dummy;h;req
+
+ r←''
+
+⍝ Show returns the raw HTTP request as a character vector without connecting
+ h←#.HttpCommand.New'get' 'http://example.com/path?q=1'
+ req←h.Show
+ :If (⎕DR'')≠⎕DR req
+     →0⊣r←'Show did not return a character vector'
+ :EndIf
+ :If ~'GET /path?q=1 HTTP/1.1'(∨/⍷)req
+     →0⊣r←'Show missing request line'
+ :EndIf
+ :If ~'Host: example.com'(∨/⍷)req
+     →0⊣r←'Show missing Host header'
+ :EndIf
+
+⍝ RequestOnly=1 on Run produces same result
+ h.RequestOnly←1
+ req←h.Run
+ :If (⎕DR'')≠⎕DR req
+     →0⊣r←'RequestOnly=1 did not return a character vector'
+ :EndIf
+ :If ~'GET /path?q=1 HTTP/1.1'(∨/⍷)req
+     →0⊣r←'RequestOnly=1 missing request line'
+ :EndIf
+ :If ~'Host: example.com'(∨/⍷)req
+     →0⊣r←'RequestOnly=1 missing Host header'
+ :EndIf

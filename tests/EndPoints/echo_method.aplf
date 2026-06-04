@@ -1,4 +1,4 @@
- ping←{
+ echo_method←{
      _←'content-type'⍵.SetHeader'text/plain'
-     'pong' ⍝ response payload
+     ⍵.Method
  }

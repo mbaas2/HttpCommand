@@ -1,4 +1,3 @@
- {r}←test_restful_post dummy;t;params;resp
- t←#.httpcommand_test
+ {r}←test_restful_post dummy;params;resp
  (params←⎕NS'').(title body userId)←'foo' 'bar' 1
- r←(⍕resp)/⍨0 201 Check(resp←#.HttpCommand.Do'post'(t._typicode,'posts')params).(rc HttpStatus)
+ r←0 201 check(resp←#.HttpCommand.Do'post'(#._typicode,'posts')params).(rc HttpStatus)
