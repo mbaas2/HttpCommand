@@ -1333,7 +1333,7 @@
 <ul>
 <li>Extra newlines have been removed for compactness.</li>
 <li>The file <code>/tmp/foo.txt</code> contains <code>Hello World</code>.</li>
-<li>We create 4 parts to be sent with the request:<ul>
+<li>We create 5 parts to be sent with the request:<ul>
 <li>a JSON array (with content type 'application/json')</li>
 <li>a named file - both the content and file name will be sent</li>
 <li>some in-workspace content to be saved as a file named 'data.txt'</li>
@@ -1384,45 +1384,6 @@ Content-Disposition: form-data; name=&quot;unnamedfile&quot;
 Content-Type: text/plain
 this is a test
 --YqXdULkJhPcuCBBikV8ffM8zS7uAdFoME4jNpDDs7SxVw9mM4q--
-</code></pre>
-<pre><code>      h←HttpCommand.New 'post' 'someurl.com'
-      p←⎕NS ''                     ⍝ create a namespace
-      p.string←'/tmp/foo.txt'       ⍝ just a value
-      p.namedfile←'@/tmp/foo.txt'   ⍝ @ = include the file name
-      p.unnamedfile←'&lt;/tmp/foo.txt' ⍝ &lt; = do not include the file name
-      p.json←'[1,2,3]' 'application/json' ⍝ value and content type
-      p.saveasfile←'this is the content' 'text/plain' 'data.txt'
-      h.Params←p                    ⍝ assign the request Params
-      h.ContentType←'multipart/form-data' ⍝ 
-      h.Show
-POST / HTTP/1.1
-Host: someurl.com                                                                                              
-User-Agent: Dyalog-HttpCommand/5.6.0
-Accept: */*
-Accept-Encoding: gzip, deflate
-Content-Type: multipart/form-data; boundary=rgt7DIuxBqLFsveaLM0fBcR7gdvahhUfbtmuQ9UMEZvv9kDVrd
-Content-Length: 631
-
---rgt7DIuxBqLFsveaLM0fBcR7gdvahhUfbtmuQ9UMEZvv9kDVrd
-Content-Disposition: form-data; name=&quot;json&quot;
-Content-Type: application/json                                                                                              
-[1,2,3]
-
---rgt7DIuxBqLFsveaLM0fBcR7gdvahhUfbtmuQ9UMEZvv9kDVrd
-Content-Disposition: form-data; name=&quot;namedfile&quot;; filename=&quot;foo.txt&quot;
-Content-Type: text/plain
-Hello World
-
---rgt7DIuxBqLFsveaLM0fBcR7gdvahhUfbtmuQ9UMEZvv9kDVrd
-Content-Disposition: form-data; name=&quot;string&quot;                                                 
-/tmp/foo.txt
-
---rgt7DIuxBqLFsveaLM0fBcR7gdvahhUfbtmuQ9UMEZvv9kDVrd
-Content-Disposition: form-data; name=&quot;unnamedfile&quot;
-Content-Type: text/plain
-Hello World
-
---rgt7DIuxBqLFsveaLM0fBcR7gdvahhUfbtmuQ9UMEZvv9kDVrd--
 </code></pre>
 
 

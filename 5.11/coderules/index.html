@@ -16,7 +16,7 @@
     
     
       
-        <title>Coderules - HttpCommand</title>
+        <title>Additional Rules - HttpCommand</title>
       
     
     
@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#additional-rules" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -98,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Coderules
+              Additional Rules
             
           </span>
         </div>
@@ -1192,6 +1197,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1210,9 +1217,37 @@
   
 
 
-  <h1>Coderules</h1>
-
-
+<h1 id="additional-rules">Additional Rules</h1>
+<ul>
+<li>read and acknowledge this file. do not deviate from it.</li>
+<li>Never use en-dash or em-dash characters in APL code or comments</li>
+<li>use setup_httpcommand_test to set up the testing environment</li>
+</ul>
+<h1 id="testing-httpcommand">Testing HttpCommand</h1>
+<ul>
+<li>the test environment can be initialized by doing <ul>
+<li>2 ⎕FIX '/git/HttpCommand/tests/setup_httpcommand_test.dyalog</li>
+<li>setup_httpcommand_test ''</li>
+</ul>
+</li>
+<li>setup_httpcommand_test will define HttpCommand, HttpServer, Using, and other code needed to run the tests and load all tests and endpoints into the workspace</li>
+<li>the HttpCommand documentation can be found at https://dyalog.github.io/HttpCommand</li>
+</ul>
+<h2 id="using-httpserver-for-tests">Using HttpServer for Tests</h2>
+<ul>
+<li>Using can be used to start an instance of HttpServer</li>
+<li>/tests/HttpServer.dyalog can be used to test behavior that's not easily replicated by a publicly available URL</li>
+<li>an example of using HttpServer can be found in test_ping.aplf</li>
+<li>you use HttpServer by creating a custom endpoint function (like ping.aplf for the test<em>ping.aplf test). this function returns the behavior intended to be tested by the test</em> function</li>
+</ul>
+<h2 id="using-httpbin-for-tests">using httpbin for tests</h2>
+<ul>
+<li>https://httpbin.org is a web service with endpoints to test various types of HTTP interation</li>
+</ul>
+<h2 id="using-websocketorg-for-testing-sse">using websocket.org for testing SSE</h2>
+<ul>
+<li>https://echo.websocket.org/.sse can be used to test SSE</li>
+</ul>
 
 
 

@@ -1,0 +1,2038 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon-32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>HttpCommand Test Suite - HttpCommand</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/print-site.css">
+    
+      <link rel="stylesheet" href="../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../css/main.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#httpcommand-test-suite" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="HttpCommand" class="md-header__button md-logo" aria-label="HttpCommand" data-md-component="logo">
+      
+  <img src="../img/dyalog-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HttpCommand
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HttpCommand Test Suite
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dyalog/httpcommand" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Dyalog/HttpCommand
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HttpCommand" class="md-nav__button md-logo" aria-label="HttpCommand" data-md-component="logo">
+      
+  <img src="../img/dyalog-white.svg" alt="logo">
+
+    </a>
+    HttpCommand
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dyalog/httpcommand" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Dyalog/HttpCommand
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userguide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Usage Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trouble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Settings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request-related Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operational-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operational Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conga-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conga-related Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxy-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Proxy-related Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sse-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSE-related Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Shared Methods
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Shared Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shortcut-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shortcut Methods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encode-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Encode/Decode Methods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misc-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Miscellaneous Methods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instance-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Instance Methods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Result Namespace
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Result Namespace
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../result-operational/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operational Elements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../result-request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Elements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../result-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Response Elements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msgs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messages and Return Codes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced Topics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../content-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request Content Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conga/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HttpCommand and Conga
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secure Communications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Server-Sent Events (SSE)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using a Proxy Server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrating/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integrating HttpCommand
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print_page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Print
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-http-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local HTTP server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      External services
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-by-feature-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests by feature area
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests by feature area">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic connectivity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic connectivity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_ping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_congainit" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_CongaInit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_closed_socket" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_closed_socket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_get" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_head" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_head
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_restful_get" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_restful_get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_restful_post" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_restful_post
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_restful_put" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_restful_put
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-and-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      URL and parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URL and parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_get_url" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_url
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_baseurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_BaseURL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request construction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request construction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_request_only" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_request_only
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_headers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_suppress_headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_suppress_headers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_content_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_content_type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_auth
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Response handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_translate_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_translate_data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_get_json" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_get_json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_max_payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_max_payload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_chunked" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_chunked
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_gzip" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_gzip
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_deflate" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_deflate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_redirections" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_redirections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_cookie_jar" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_cookie_jar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_cookie_multiple" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_cookie_multiple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_cookie_attrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_cookie_attrs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_cookie_maxage" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_cookie_maxage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_cookie_delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_cookie_delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_cookie_delete_maxage" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_cookie_delete_maxage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_cookie_path_filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_cookie_path_filter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connection management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_timeout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_keep_alive" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_keep_alive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_closed_socket_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_closed_socket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      File output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_outfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_outfile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utility-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utility functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Utility functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_base64" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_base64
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test_url_encode_decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_url_encode_decode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-sent-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server-Sent Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server-Sent Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test_sse" class="md-nav__link">
+    <span class="md-ellipsis">
+      test_sse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="httpcommand-test-suite">HttpCommand Test Suite</h1>
+<p>Tests live in <code>tests/</code>. The test runner is <code>setup_httpcommand_test.dyalog</code>, which loads all test and endpoint functions into the workspace. Most tests use a local <code>HttpServer</code> instance; a small number require external network access.</p>
+<h2 id="running-tests">Running tests</h2>
+<pre><code class="language-apl">2 ⎕FIX '/path/to/tests/setup_httpcommand_test.dyalog'
+setup_httpcommand_test ''
+result←test_name 0   ⍝ '' = pass, non-empty string = failure message
+</code></pre>
+<h2 id="infrastructure">Infrastructure</h2>
+<h3 id="local-http-server">Local HTTP server</h3>
+<p>Most tests start <code>HttpServer</code> on port 8090 using the <code>Using</code> helper:</p>
+<pre><code class="language-apl">url←'http://localhost:',⍕port←8090 Using HttpServer
+</code></pre>
+<p><code>Using</code> reuses an already-running instance if one exists on any port. Endpoint functions are in <code>tests/EndPoints/</code> and are loaded automatically by <code>setup_httpcommand_test</code>.</p>
+<h3 id="external-services">External services</h3>
+<p>A few tests rely on external URLs defined by <code>setup_httpcommand_test</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Service</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_httpbin</code></td>
+<td><code>httpbin.org</code></td>
+<td><code>test_get</code>, <code>test_get_url</code>, <code>test_chunked</code>, <code>test_gzip</code>, <code>test_deflate</code></td>
+</tr>
+<tr>
+<td><code>_typicode</code></td>
+<td><code>jsonplaceholder.typicode.com</code></td>
+<td><code>test_restful_get</code>, <code>test_restful_post</code>, <code>test_restful_put</code></td>
+</tr>
+<tr>
+<td><code>_websocket</code></td>
+<td><code>echo.websocket.org</code></td>
+<td><code>test_sse</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tests-by-feature-area">Tests by feature area</h2>
+<h3 id="basic-connectivity">Basic connectivity</h3>
+<h4 id="test_ping"><code>test_ping</code></h4>
+<p>Sends a GET to the local <code>/EndPoints/ping</code> and verifies the response is <code>rc=0</code>, <code>HttpStatus=200</code>, <code>Data='pong'</code>. Serves as a baseline connectivity check.</p>
+<h4 id="test_congainit"><code>test_CongaInit</code></h4>
+<p>Verifies that HttpCommand can initialise Conga from a user-supplied <code>CongaPath</code>. Copies the Conga workspace and shared libraries to a temporary directory, resets <code>HttpCommand.LDRC</code>, sets <code>CongaPath</code> to the temporary directory, then confirms a successful GET request. Restores the original <code>CongaPath</code> on cleanup. Uses the local HttpServer to avoid external network dependency.</p>
+<h4 id="test_closed_socket"><code>test_closed_socket</code></h4>
+<p>Confirms that HttpCommand returns <code>rc=1119</code> when the server closes the connection without sending a response. Uses the <code>/EndPoints/closed_socket</code> endpoint, which closes the Conga connection immediately.</p>
+<hr />
+<h3 id="http-methods">HTTP methods</h3>
+<h4 id="test_get"><code>test_get</code></h4>
+<p>Basic GET to <code>httpbin.org/get</code>. Asserts <code>rc=0</code> and <code>HttpStatus=200</code>.</p>
+<h4 id="test_head"><code>test_head</code></h4>
+<p>Sends a HEAD request to the local <code>/EndPoints/echo_method</code>. Verifies <code>rc=0</code>, <code>HttpStatus=200</code>, and that <code>Data</code> is empty (HttpCommand does not read the response body for HEAD).</p>
+<h4 id="test_delete"><code>test_delete</code></h4>
+<p>Sends a DELETE request to <code>/EndPoints/echo_method</code>, which echoes the HTTP method name. Asserts <code>rc=0</code>, <code>HttpStatus=200</code>, <code>Data='delete'</code>.</p>
+<h4 id="test_restful_get"><code>test_restful_get</code></h4>
+<p>GET to <code>jsonplaceholder.typicode.com/posts</code>. Asserts <code>rc=0</code> and <code>HttpStatus=200</code>.</p>
+<h4 id="test_restful_post"><code>test_restful_post</code></h4>
+<p>POST a namespace (<code>title</code>, <code>body</code>, <code>userId</code>) to <code>jsonplaceholder.typicode.com/posts</code>. Asserts <code>rc=0</code> and <code>HttpStatus=201</code>.</p>
+<h4 id="test_restful_put"><code>test_restful_put</code></h4>
+<p>PUT a namespace to <code>jsonplaceholder.typicode.com/posts/1</code>. Asserts <code>rc=0</code> and <code>HttpStatus=200</code>.</p>
+<hr />
+<h3 id="url-and-parameters">URL and parameters</h3>
+<h4 id="test_get_url"><code>test_get_url</code></h4>
+<p>Exercises four equivalent ways to supply query parameters to <code>HttpCommand.Get</code>:</p>
+<ol>
+<li>Query string embedded in the URL (<code>?one=test&amp;two=two%20words</code>)</li>
+<li>Name/value pair as a second argument (<code>'two' 'two words'</code>)</li>
+<li>Namespace with fields <code>one</code> and <code>two</code></li>
+<li>Pre-encoded string as the params argument</li>
+</ol>
+<p>For each, verifies <code>rc=0</code>, <code>HttpStatus=200</code>, and that the server echoes back <code>args.one='test'</code> and <code>args.two='two words'</code>.</p>
+<h4 id="test_baseurl"><code>test_BaseURL</code></h4>
+<p>Tests all combinations of <code>BaseURL</code> and <code>URL</code>:</p>
+<ul>
+<li>Neither set: <code>.Show</code> returns an error namespace with <code>'No URL specified'</code> in <code>msg</code></li>
+<li>Only <code>BaseURL</code> set: request targets the base host</li>
+<li>Only <code>URL</code> set (no scheme): treated as a bare path with host inferred from URL</li>
+<li>Both set: <code>URL</code> is appended to <code>BaseURL</code>; a live <code>.Run</code> confirms <code>Data='pong'</code></li>
+</ul>
+<hr />
+<h3 id="request-construction">Request construction</h3>
+<h4 id="test_request_only"><code>test_request_only</code></h4>
+<p>Verifies that <code>.Show</code> and <code>RequestOnly=1</code> both return the HTTP request as a character vector without making a network connection. Checks for the request line (<code>GET /path?q=1 HTTP/1.1</code>) and <code>Host:</code> header.</p>
+<h4 id="test_headers"><code>test_headers</code></h4>
+<p>Verifies that the <code>Headers</code> field accepts three input formats, all producing correct headers in the request (confirmed via <code>.Show</code>):</p>
+<ul>
+<li><strong>Matrix</strong>: <code>2 2⍴'X-One' 'aaa' 'X-Two' 'bbb'</code></li>
+<li><strong>Colon-delimited strings</strong>: <code>'X-One: ccc' 'X-Two: ddd'</code></li>
+<li><strong>Depth-3 pairs</strong>: <code>('X-One' 'eee')('X-Two' 'fff')</code></li>
+</ul>
+<h4 id="test_suppress_headers"><code>test_suppress_headers</code></h4>
+<p>Confirms that <code>SuppressHeaders=0</code> (default) includes <code>Host:</code> and <code>User-Agent:</code> in the request, and that <code>SuppressHeaders=1</code> omits them. Verified via <code>.Show</code>.</p>
+<h4 id="test_content_type"><code>test_content_type</code></h4>
+<p>Verifies <code>ContentType</code> behaviour using <code>.Show</code>:</p>
+<ul>
+<li>A namespace <code>Params</code> auto-detects as <code>application/json</code></li>
+<li>Setting <code>ContentType←'application/x-www-form-urlencoded'</code> overrides that and removes the JSON content type</li>
+<li>An arbitrary <code>ContentType←'text/xml; charset=utf-8'</code> passes through unchanged</li>
+</ul>
+<h4 id="test_auth"><code>test_auth</code></h4>
+<p>Tests <code>Auth</code> and <code>AuthType</code> settings in three forms (verified via <code>.Show</code> with <code>Secret←0</code>):</p>
+<ul>
+<li><code>Auth←'user:secret'</code> produces <code>Authorization: Basic &lt;base64('user:secret')&gt;</code></li>
+<li><code>Auth←'user' 'secret'</code> (2-element vector) produces the same encoding</li>
+<li><code>Auth←'mytoken123'</code> with <code>AuthType←'Bearer'</code> produces <code>Authorization: Bearer mytoken123</code></li>
+</ul>
+<p>Also makes a live request to <code>/EndPoints/echo_authorization</code> to confirm the header reaches the server with the correct Base64-encoded credentials.</p>
+<hr />
+<h3 id="response-handling">Response handling</h3>
+<h4 id="test_translate_data"><code>test_translate_data</code></h4>
+<p>Sets <code>TranslateData←1</code> and GETs <code>/EndPoints/json_response</code> (which returns <code>{"status":"ok","value":42}</code>). Verifies the response <code>Data</code> is a namespace with <code>status='ok'</code> and <code>value=42</code>.</p>
+<h4 id="test_get_json"><code>test_get_json</code></h4>
+<p>Calls <code>HttpCommand.GetJSON</code> against <code>/EndPoints/json_response</code>. Verifies the parsed namespace has the correct fields. Also calls <code>GetJSON</code> against <code>/EndPoints/ping</code> (which returns <code>text/plain</code>) and confirms that fails with <code>rc≠0</code>.</p>
+<h4 id="test_max_payload"><code>test_max_payload</code></h4>
+<p>Exercises <code>MaxPayloadSize</code> against <code>/EndPoints/large_response</code> (10 000 bytes):</p>
+<ul>
+<li>Default (<code>MaxPayloadSize=¯1</code>): full response received, <code>≢Data=10000</code></li>
+<li><code>MaxPayloadSize←100</code>: returns <code>rc=¯1</code> with <code>'MaxPayloadSize'</code> in the error message</li>
+</ul>
+<h4 id="test_chunked"><code>test_chunked</code></h4>
+<p>GETs <code>httpbin.org/stream/3</code>, which responds with chunked transfer encoding. Asserts <code>rc=0</code>, <code>HttpStatus=200</code>, and <code>Transfer-Encoding: chunked</code> in the response headers.</p>
+<h4 id="test_gzip"><code>test_gzip</code></h4>
+<p>GETs <code>httpbin.org/gzip</code>. Asserts <code>rc=0</code>, <code>HttpStatus=200</code>, and <code>Content-Encoding: gzip</code> in response headers. Confirms HttpCommand transparently decompresses the body.</p>
+<h4 id="test_deflate"><code>test_deflate</code></h4>
+<p>GETs <code>httpbin.org/deflate</code>. Same as <code>test_gzip</code> but for deflate encoding.</p>
+<hr />
+<h3 id="redirects">Redirects</h3>
+<h4 id="test_redirections"><code>test_redirections</code></h4>
+<p>Tests <code>MaxRedirections</code> and the <code>Redirections</code> result element against <code>/EndPoints/redirect</code> (which returns a 302 to <code>/EndPoints/ping</code>):</p>
+<ul>
+<li><code>MaxRedirections←0</code>: response has <code>HttpStatus=302</code>, <code>Redirections</code> is empty</li>
+<li>Default (<code>MaxRedirections=10</code>): follows the redirect; final response has <code>HttpStatus=200</code>, <code>Data='pong'</code>, and <code>Redirections</code> contains one entry with <code>HttpStatus=302</code></li>
+</ul>
+<hr />
+<h3 id="cookies">Cookies</h3>
+<h4 id="test_cookie_jar"><code>test_cookie_jar</code></h4>
+<p>Confirms cookie persistence in instance mode. Makes two requests on the same instance: the first to <code>/EndPoints/set_cookie</code> (sets <code>sessionid=abc123</code>), the second to <code>/EndPoints/echo_cookies</code>. Asserts the second response body contains <code>sessionid=abc123</code>, proving the cookie was stored and re-sent.</p>
+<h4 id="test_cookie_multiple"><code>test_cookie_multiple</code></h4>
+<p>GETs <code>/EndPoints/set_multiple_cookies</code>, which sets three cookies (<code>alpha=one</code>, <code>beta=two</code>, <code>gamma=three</code>) in a single response. Asserts <code>≢result.Cookies=3</code> and that all three names and values are present.</p>
+<h4 id="test_cookie_attrs"><code>test_cookie_attrs</code></h4>
+<p>GETs <code>/EndPoints/set_cookie_attrs</code>, which sets a cookie with <code>Path=/api</code>, <code>SameSite=Lax</code>, and <code>HttpOnly</code>. Verifies each attribute is parsed correctly into the cookie namespace (<code>Name</code>, <code>Value</code>, <code>Path</code>, <code>SameSite</code>, <code>HttpOnly</code>).</p>
+<h4 id="test_cookie_maxage"><code>test_cookie_maxage</code></h4>
+<p>GETs <code>/EndPoints/set_cookie_maxage</code>, which sets a cookie with <code>Max-Age=3600</code>. Verifies that <code>Expires</code> is set to a numeric IDN value (not a string) derived from the Max-Age.</p>
+<h4 id="test_cookie_delete"><code>test_cookie_delete</code></h4>
+<p>Two-request sequence: set a cookie via <code>/EndPoints/set_cookie</code>, then send a request to <code>/EndPoints/delete_cookie</code> (which replies with a past <code>Expires</code> date). Asserts the cookie jar is empty after the second request.</p>
+<h4 id="test_cookie_delete_maxage"><code>test_cookie_delete_maxage</code></h4>
+<p>Same as <code>test_cookie_delete</code> but the deletion endpoint uses <code>Max-Age=0</code> instead of a past <code>Expires</code> date.</p>
+<h4 id="test_cookie_path_filter"><code>test_cookie_path_filter</code></h4>
+<p>GETs <code>/EndPoints/set_cookie_pathonly</code>, which sets <code>apikey=secret</code> with <code>Path=/api</code>. Then GETs <code>/EndPoints/echo_cookies</code> (path <code>/EndPoints</code>). Asserts the path-restricted cookie is NOT sent because <code>/EndPoints</code> does not match <code>/api</code>.</p>
+<hr />
+<h3 id="connection-management">Connection management</h3>
+<h4 id="test_timeout"><code>test_timeout</code></h4>
+<p>Uses the local <code>/EndPoints/timeout</code> endpoint (10-second delay):</p>
+<ul>
+<li><code>Timeout←5</code>: request times out, <code>rc=100</code></li>
+<li><code>Timeout←15</code>: request completes, <code>rc=0</code></li>
+</ul>
+<h4 id="test_keep_alive"><code>test_keep_alive</code></h4>
+<p>Makes two consecutive requests on the same instance with <code>KeepAlive=1</code> (default) and then with <code>KeepAlive=0</code>. Asserts <code>rc=0</code> for all four requests, confirming both modes complete successfully.</p>
+<h4 id="test_closed_socket_1"><code>test_closed_socket</code></h4>
+<p><em>(See Basic connectivity above.)</em></p>
+<hr />
+<h3 id="file-output">File output</h3>
+<h4 id="test_outfile"><code>test_outfile</code></h4>
+<p>Tests all three <code>OutFile</code> write modes against <code>dyalog.com</code>:</p>
+<ul>
+<li>No <code>OutFile</code>: response data arrives in <code>Data</code></li>
+<li><code>OutFile←filename</code>: data written to file; <code>BytesWritten</code> matches file size; <code>Data</code> is not populated</li>
+<li>Attempting to write again with default (no overwrite) returns <code>rc=¯1</code> with a "not empty" error</li>
+<li><code>OutFile←filename 1</code> (overwrite): succeeds; file content matches original</li>
+<li><code>OutFile←filename 2</code> (append): file is twice as large; <code>BytesWritten</code> accounts for the appended bytes</li>
+</ul>
+<hr />
+<h3 id="utility-functions">Utility functions</h3>
+<h4 id="test_base64"><code>test_base64</code></h4>
+<p>Tests <code>HttpCommand.Base64Encode</code> and <code>Base64Decode</code>:</p>
+<ul>
+<li><code>Base64Encode 'hello'</code> = <code>'aGVsbG8='</code></li>
+<li><code>Base64Decode 'aGVsbG8='</code> = <code>'hello'</code></li>
+<li>Round-trip of <code>'Hello, World!'</code></li>
+<li>Round-trip of empty string</li>
+</ul>
+<h4 id="test_url_encode_decode"><code>test_url_encode_decode</code></h4>
+<p>Tests <code>HttpCommand.UrlEncode</code> and <code>UrlDecode</code>:</p>
+<ul>
+<li><code>UrlEncode 'hello world'</code> = <code>'hello%20world'</code></li>
+<li><code>UrlDecode 'hello%20world'</code> = <code>'hello world'</code></li>
+<li><code>UrlDecode 'hello+world'</code> = <code>'hello world'</code> (<code>+</code> decoded as space)</li>
+<li><code>'q' UrlEncode 'hello world'</code> = <code>'q=hello%20world'</code></li>
+<li>Round-trip of <code>'hello world'</code></li>
+</ul>
+<hr />
+<h3 id="server-sent-events">Server-Sent Events</h3>
+<h4 id="test_sse"><code>test_sse</code></h4>
+<p>Connects to <code>echo.websocket.org/.sse</code> with <code>EnableSSE←1</code> and <code>OnSSEfn</code> set to a handler that appends events to <code>#.SSEEvents</code>. Waits up to 10 seconds for at least one event. Asserts <code>rc=0</code> on start and that at least one event was received. Closes the SSE connection and synchronises the thread on teardown.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener"><strong>Material for MkDocs</strong></a><br/>Copyright &copy; 2015-2024 <strong><a href="https://dyalog.com" target="_blank" rel="noopener">Dyalog, LTD</a></strong>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.instant"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
