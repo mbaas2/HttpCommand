@@ -3,5 +3,6 @@
     Tests: [{
         "DyalogVersions": "18.2-",
         "Test": "./tests/unit.dyalogtest",
+        "sequential":1
     }, ]
 }
