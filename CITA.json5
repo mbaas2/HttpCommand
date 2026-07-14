@@ -1,7 +1,7 @@
 /* HttpCommand CITA */
 {
     Tests: [{
-        "DyalogVersions": "17+",
+        "DyalogVersions": "18.2-",
         "Test": "./tests/unit.dyalogtest",
     }, ]
 }
